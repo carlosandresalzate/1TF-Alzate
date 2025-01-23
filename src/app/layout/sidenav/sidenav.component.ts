@@ -10,7 +10,7 @@ import { Component } from '@angular/core';
 export class SidenavComponent {
   showFiller = false;
 
-  opened: boolean = true;
+  opened: boolean = false;
 
   menuItem = [{ path: '/students', label: 'Estudiantes' }];
 }
