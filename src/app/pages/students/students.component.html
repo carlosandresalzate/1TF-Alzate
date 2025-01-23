@@ -1,1 +1,31 @@
-<p>students works!</p>
+<h1>Estudiantes</h1>
+
+<form (ngSubmit)="onSubmit()" [formGroup]="studentForm" class="studentForm">
+  <mat-form-field appearance="fill">
+    <mat-label>Nombre</mat-label>
+    <input
+      formControlName="name"
+      matInput
+      type="text"
+      name="name"
+      id="name"
+      title="name"
+    />
+    <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+    <mat-hint>Hint</mat-hint>
+  </mat-form-field>
+  <mat-form-field appearance="fill">
+    <mat-label>Apellido</mat-label>
+    <input
+      formControlName="lastName"
+      matInput
+      type="text"
+      name="lastName"
+      id="lastName"
+      title="lastName"
+    />
+    <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+    <mat-hint>Hint</mat-hint>
+  </mat-form-field>
+  <button mat-flat-button type="submit">Guardar</button>
+</form>
