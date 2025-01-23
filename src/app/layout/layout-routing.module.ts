@@ -7,7 +7,16 @@ const routes: Routes = [
   {
     path: '',
     component: LayoutComponent,
-    children: [{ path: 'students', component: StudentsComponent }],
+    children: [
+      { path: '', redirectTo: 'students', pathMatch: 'full' },
+      {
+        path: 'students',
+        /* component: StudentsComponent  */ loadChildren: () =>
+          import('../pages/students/students.module').then(
+            (m) => m.StudentsModule
+          ),
+      },
+    ],
   },
 ];
 

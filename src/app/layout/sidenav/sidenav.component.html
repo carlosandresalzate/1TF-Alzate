@@ -3,7 +3,12 @@
     <h1>CH</h1>
     <mat-list>
       <!-- <a mat-list-item routerLink="/students">Estudiantes</a> -->
-      <a mat-list-item *ngFor="let item of menuItem" [routerLink]="item.path">
+      <a
+        mat-list-item
+        *ngFor="let item of menuItem"
+        [routerLink]="item.path"
+        routerLinkActive="active"
+      >
         {{ item.label }}</a
       >
     </mat-list>
