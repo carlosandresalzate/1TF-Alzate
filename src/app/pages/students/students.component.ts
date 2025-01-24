@@ -1,5 +1,12 @@
-import { Component } from '@angular/core';
+import { Component, Inject, inject } from '@angular/core';
 import { Student } from './models/student';
+
+import { ConfirmDeleteComponent } from './components/confirm-delete/confirm-delete.component';
+
+// material
+import { MatDialog } from '@angular/material/dialog';
+import { SnackBarNotificationComponent } from './components/snack-bar-notification/snack-bar-notification.component';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-students',
@@ -92,14 +99,33 @@ export class StudentsComponent {
     'delete',
   ];
 
-  // dataSource = this.students;
+  constructor(private dialog: MatDialog, private snackBar: MatSnackBar) {}
 
   // metodos
-  onDelete(id: string) {
-    console.log(id);
+  /**
+   * @description : este metodo abre una ventana de confirmacion al borrar un estudiante y pregunta al usuario si esta seguro, para proceder con la eliminacion.
+   * @param element : el estudiante que se va a borrar
+   */
+  onDelete(element: Student) {
+    const id: string = element.id;
 
-    if (confirm('esta seguro')) {
-      this.students = this.students.filter((el) => el.id != id);
-    }
+    const dialogRef = this.dialog.open(ConfirmDeleteComponent, {
+      data: { name: element.name, lastName: element.lastName },
+    });
+
+    dialogRef.afterClosed().subscribe((confirmed: boolean) => {
+      if (confirmed) {
+        this.students = this.students.filter((el) => el.id != id);
+        // mostrar snack bar
+        setTimeout(() => {
+          this.snackBar.openFromComponent(SnackBarNotificationComponent, {
+            data: { message: `${element.name} ${element.lastName}` },
+            duration: 1500,
+            horizontalPosition: 'right',
+            verticalPosition: 'bottom',
+          });
+        }, 300);
+      }
+    });
   }
 }
