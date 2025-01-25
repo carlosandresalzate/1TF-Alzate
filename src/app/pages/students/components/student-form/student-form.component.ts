@@ -17,10 +17,10 @@ export class StudentFormComponent {
   constructor(private fb: FormBuilder) {
     // creo el grupo de controles
     this.studentForm = this.fb.group({
-      name: ['carlos'],
-      lastName: ['alzate'],
-      email: ['b2@gmail.com'],
-      phoneNumber: ['2598195'],
+      name: [null],
+      lastName: [null],
+      email: [null],
+      phoneNumber: [null],
     });
   }
 
@@ -30,6 +30,5 @@ export class StudentFormComponent {
     this.studentForm.value.id = generateRandomID(6);
     this.addStudent.emit(this.studentForm.value);
     // console.log(this.studentForm.value);
-
   }
 }
