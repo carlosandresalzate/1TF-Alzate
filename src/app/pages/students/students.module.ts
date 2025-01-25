@@ -13,12 +13,14 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatDialogModule } from '@angular/material/dialog';
 import { ConfirmDeleteComponent } from './components/confirm-delete/confirm-delete.component';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { StudentFormComponent } from './components/student-form/student-form.component';
 
 @NgModule({
   declarations: [
     StudentsComponent,
     ConfirmDeleteComponent,
     SnackBarNotificationComponent,
+    StudentFormComponent,
   ],
   imports: [
     CommonModule,
