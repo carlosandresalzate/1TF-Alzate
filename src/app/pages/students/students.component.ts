@@ -1,5 +1,7 @@
-import { Component, Inject, inject } from '@angular/core';
+import { Component } from '@angular/core';
 import { Student } from './models/student';
+
+import { generateRandomID } from '../../shared/utils';
 
 import { ConfirmDeleteComponent } from './components/confirm-delete/confirm-delete.component';
 
@@ -18,70 +20,70 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 export class StudentsComponent {
   students: Student[] = [
     {
-      id: '1',
+      id: generateRandomID(6),
       name: 'John',
       lastName: 'Doe',
       email: 'john.doe@example.com',
       phoneNumber: '123-456-7890',
     },
     {
-      id: '2',
+      id: generateRandomID(6),
       name: 'Jane',
       lastName: 'Smith',
       email: 'jane.smith@example.com',
       phoneNumber: '123-555-7890',
     },
     {
-      id: '3',
+      id: generateRandomID(6),
       name: 'Alice',
       lastName: 'Brown',
       email: 'alice.brown@example.com',
       phoneNumber: '123-456-8888',
     },
     {
-      id: '4',
+      id: generateRandomID(6),
       name: 'Bob',
       lastName: 'Davis',
       email: 'bob.davis@example.com',
       phoneNumber: '123-456-1234',
     },
     {
-      id: '5',
+      id: generateRandomID(6),
       name: 'Charlie',
       lastName: 'Evans',
       email: 'charlie.evans@example.com',
       phoneNumber: '555-456-7890',
     },
     {
-      id: '6',
+      id: generateRandomID(6),
       name: 'Diana',
       lastName: 'Garcia',
       email: 'diana.garcia@example.com',
       phoneNumber: '123-999-7890',
     },
     {
-      id: '7',
+      id: generateRandomID(6),
       name: 'Edward',
       lastName: 'Hill',
       email: 'edward.hill@example.com',
       phoneNumber: '456-123-7890',
     },
     {
-      id: '8',
+      id: generateRandomID(6),
       name: 'Fiona',
       lastName: 'Johnson',
       email: 'fiona.johnson@example.com',
       phoneNumber: '987-456-7890',
     },
     {
-      id: '9',
+      id: generateRandomID(6),
       name: 'George',
       lastName: 'King',
       email: 'george.king@example.com',
       phoneNumber: '123-456-0000',
     },
     {
-      id: '10',
+      id: generateRandomID(6),
       name: 'Hannah',
       lastName: 'Lee',
       email: 'hannah.lee@example.com',
@@ -127,5 +129,10 @@ export class StudentsComponent {
         }, 300);
       }
     });
+  }
+
+  addStudent(newStudent: Student) {
+    console.log('newStudent: ', newStudent);
+    console.log((this.students = [...this.students, { ...newStudent }]));
   }
 }

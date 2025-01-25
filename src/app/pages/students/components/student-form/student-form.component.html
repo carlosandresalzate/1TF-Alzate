@@ -1,1 +1,51 @@
 <p>student-form works!</p>
+
+<div class="student-form-container">
+  <form #loginForm="ngForm" (ngSubmit)="onSubmit()" [formGroup]="studentForm">
+    <div class="form-fields">
+      <mat-form-field>
+        <input
+          matInput
+          formControlName="name"
+          type="text"
+          id="inputName"
+          placeholder="Nombre"
+        />
+      </mat-form-field>
+      <mat-form-field>
+        <input
+          matInput
+          formControlName="lastName"
+          type="text"
+          id="inputLastName"
+          placeholder="Apellido"
+        />
+      </mat-form-field>
+    </div>
+    <div class="form-dields">
+      <mat-form-field>
+        <input
+          matInput
+          formControlName="email"
+          type="email"
+          id="inputEmail"
+          placeholder="Correo" /></mat-form-field
+      ><mat-form-field>
+        <input
+          matInput
+          formControlName="phoneNumber"
+          type="tel"
+          id="inputPhoneNumber"
+          placeholder="Telefono"
+        />
+      </mat-form-field>
+    </div>
+    <button mat-flat-button type="submit">Guardar</button>
+  </form>
+  <div>
+    <p>Nombre: {{ studentForm.value.name }} {{ studentForm.value.lastName }}</p>
+    <p>Correo: {{ studentForm.value.email }}</p>
+    <p>Correo: {{ studentForm.value.phoneNumber }}</p>
+    <pre>{{ studentForm.value | json }}</pre>
+  </div>
+</div>
